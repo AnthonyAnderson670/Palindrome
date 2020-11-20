@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Palindrome Checker</title>
+		<style>
+			body {
+				background-color: #6F6F6F
+			}
+			#container {
+				text-align: center;
+				padding: inherit;
+				border: groove;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+		<p>A palindrome is a word, number, phrase, or other sequence of characters which reads the same backward as forward. Enter text below to see if it is a palindrome!</p>
+		
+		<div id="cipherCode" class="header">
+			<h1>Palindrome Checker</h1>
+			<input type="text" id="text" placeholder="Enter text"><button onclick="checkText()" id="submit">Submit</button>
+		</div>
+	
+	
+		<span id="result"></span>
+		</div>
+	
+		<script>
+			function palindrome(str) {
+  				var newStr = str.replace(/[\W_]/g, "").toLowerCase();
+  				var revStr = newStr.split("").reverse().join("");
+
+      			if (newStr === revStr) {
+					return true;
+      			} 
+				return false;
+			}
+			
+			function checkText() {
+				let text = document.getElementById("text").value;
+				
+				if (!palindrome(text)) {
+					document.getElementById("result").innerHTML = "That is not a Palindrome!";
+				} else {
+					document.getElementById("result").innerHTML = "Congradulations! You found a Palindrome!";
+				}
+			}
+				
+			//submit when return is pressed
+			text.addEventListener("keyup", function(event) {
+				if (event.keyCode === 13) {
+					event.preventDefault();
+					document.getElementById("submit").click();
+				}
+			});
+		</script>
+</body>
+</html>
